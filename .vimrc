@@ -3,9 +3,9 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" This is the Vundle package, which can be found on GitHub.
-" " For GitHub repos, you specify plugins using the
-" " 'user/repository' format
+" Vundle plugin manager, this takes care of installing all later mentioned
+" plugins
+
 Plugin 'gmarik/vundle'
 
 Plugin 'tpope/vim-fugitive'
@@ -20,8 +20,10 @@ Plugin 'vim-scripts/Gundo'
 
 filetype plugin indent on
 
+" Don't wrap lines
 set nowrap
 
+" Use four spaces instead of a tabstop
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -42,15 +44,20 @@ nnoremap <C-y> :Unite history/yank<CR>
 nnoremap <C-b> :Unite -start-insert buffer<CR>
 nnoremap <C-s> :Unite -start-insert file_rec<CR>
 
+" Start with a NerdTree Tab open, of no file was specified at start, otherwise
+" don't open nerdtree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-t> :NERDTreeToggle<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Hide, don't close buffers
 set hidden
 
 syntax enable
+
+" Use solarized light color scheme
 if has('gui_running')
     set background=light
 else
