@@ -11,12 +11,14 @@ Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimfiler.vim'
 Plugin 'neilagabriel/vim-geeknote'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Shougo/unite.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/Gundo'
+Plugin 'tpope/vim-surround'
 
 filetype plugin indent on
 
@@ -41,8 +43,9 @@ map <C-e> :Geeknote<cr>
 let g:unite_source_history_yank_enable = 1
 nnoremap <C-y> :Unite history/yank<CR>
 
-nnoremap <C-b> :Unite -start-insert buffer<CR>
-nnoremap <C-s> :Unite -start-insert file_rec<CR>
+nnoremap <C-b> :Unite -toggle -no-split -start-insert buffer<CR>
+nnoremap <C-s> :UniteWithCurrentDir -toggle -no-split -start-insert file file_rec<CR>
+nnoremap <C-f> :Unite -toggle -no-split -start-insert line<CR>
 
 " Start with a NerdTree Tab open, of no file was specified at start, otherwise
 " don't open nerdtree
