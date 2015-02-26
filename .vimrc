@@ -1,4 +1,5 @@
 set nocompatible
+let mapleader=","
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -19,6 +20,11 @@ Plugin 'Shougo/unite.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'bling/vim-airline'
+Plugin 'Shougo/neomru.vim'
+Plugin 'mtth/scratch.vim'
 
 filetype plugin indent on
 
@@ -29,8 +35,22 @@ set nowrap
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set incsearch
+set hlsearch
+
+" Display relative line numbers for navigation
+set relativenumber 
+inoremap jj <ESC>
 
 syntax on
+
+" Easymotion mappings
+map <Leader>d <Plug>(easymotion-lineforward)
+map <Leader>s <Plug>(easymotion-j)
+map <Leader>w <Plug>(easymotion-k)
+map <Leader>a <Plug>(easymotion-linebackward)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
 
 " Autocompletion for closing html tags on typing </<SPACEBAR>
 iabbrev </ </<C-X><C-O>
